@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "deny": [
+      "mcp__terraform__create_run",
+      "mcp__terraform__action_run",
+      "mcp__terraform__create_workspace",
+      "mcp__terraform__update_workspace",
+      "mcp__terraform__delete_workspace_safely",
+      "mcp__terraform__create_workspace_variable",
+      "mcp__terraform__update_workspace_variable",
+      "mcp__terraform__create_variable_set",
+      "mcp__terraform__attach_policy_set_to_workspaces",
+      "mcp__terraform__grant_team_access",
+      "Bash(terraform apply*)",
+      "Bash(terraform plan*)",
+      "Bash(terraform destroy*)",
+      "Bash(gh pr merge*)",
+      "Bash(git push origin main*)",
+      "Bash(git push * main*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit|Update",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/deny-config-files.sh\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

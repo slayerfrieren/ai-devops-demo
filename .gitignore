@@ -2,3 +2,4 @@
 .terraform/
 .terraform.lock.hcl
 .demo/
+.claude/settings.local.json

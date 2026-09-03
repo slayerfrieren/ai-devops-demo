@@ -8,16 +8,3 @@ terraform {
     }
   }
 }
-
-provider "aws" {
-  region = var.region
-
-  default_tags {
-    tags = {
-      owner       = "build-team"
-      cost_center = "eng-build"
-      environment = "dev"
-      service     = "build-service"
-    }
-  }
-}
