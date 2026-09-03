@@ -12,3 +12,5 @@ module "build_artifacts" {
     service     = "build-service"
   }
 }
+
+# vcs trigger test
