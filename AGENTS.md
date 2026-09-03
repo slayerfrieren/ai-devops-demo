@@ -25,9 +25,13 @@ run and policy results. It is read-only for this workspace by design.
 5. Push the branch and open a pull request with `gh pr create`, describing
    what you are provisioning and why.
 6. HCP Terraform posts its plan and policy results as status checks on the
-   pull request. Wait for them (`gh pr checks --watch`). To read the details,
-   use the MCP server: `list_runs` for the workspace, then `get_run_details`
-   for the newest run, which includes the policy check results and their
+   pull request. Wait for them (`gh pr checks --watch`). Pull-request runs
+   are speculative, so they do not appear in the MCP `list_runs` tool. To
+   find yours, query the API once with the token in
+   `TF_TOKEN_app_terraform_io`:
+   `curl -s -H "Authorization: Bearer $TF_TOKEN_app_terraform_io" "https://app.terraform.io/api/v2/workspaces/ws-WMhHkDWDRpc8pTvy/runs?filter%5Boperation%5D=plan_only&page%5Bsize%5D=3"`
+   and take the newest run id. Then read it through the MCP server with
+   `get_run_details`, which includes the policy check results and their
    output.
 7. If a run fails a policy check, read the policy output, adjust the
    configuration to comply, briefly note in the PR what you changed and why,
