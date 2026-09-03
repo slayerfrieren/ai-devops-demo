@@ -3,7 +3,7 @@ module "build_artifacts" {
   version = "1.6.0"
 
   bucket_name = "build-service-artifacts-dev"
-  region      = "us-west-2"
+  region      = "us-east-2"
 
   tags = {
     owner       = "build-team"
