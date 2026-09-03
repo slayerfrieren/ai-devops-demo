@@ -6,6 +6,6 @@ module "artifacts" {
   version = "1.6.0"
 
   bucket_name = "build-service-dev-artifacts"
-  region      = local.region
+  region      = "us-east-2"
   tags        = local.tags
 }
