@@ -5,7 +5,7 @@ module "build_artifacts" {
   version = "1.6.0"
 
   bucket_name        = "${local.service}-${local.environment}-artifacts"
-  region             = local.region
+  region             = "us-east-2"
   versioning_enabled = true
   lifecycle_days     = 30
 
